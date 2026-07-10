@@ -1,0 +1,31 @@
+1.	#include <bits/stdc++.h>
+2.	using namespace std;
+3.	 
+4.	int main() {
+5.	    ios_base::sync_with_stdio(false);
+6.	    cin.tie(nullptr);
+7.	    
+8.	    int n;
+9.	    cin >> n;
+10.	    
+11.	    vector<long long> a(n);
+12.	    for (int i = 0; i < n; i++) {
+13.	        cin >> a[i];
+14.	    }
+15.	    
+16.	    sort(a.begin(), a.end());
+17.	    
+18.	    long long count = 0;
+19.	    
+20.	    for (int i = 0; i < n - 2; i++) {
+21.	        int k = i + 2; 
+22.	        for (int j = i + 1; j < n - 1; j++) {
+23.	            while (k < n && a[i] + a[j] > a[k]) {
+24.	                k++;
+25.	            }
+26.	            count += max(0, k - j - 1);
+27.	        }
+28.	    }
+29.	    
+30.	    cout << count << "\n";
+31.	    
