@@ -1,0 +1,33 @@
+1.	#include <bits/stdc++.h>
+2.	using namespace std;
+3.	 
+4.	int main() {
+5.	    ios::sync_with_stdio(false);
+6.	    cin.tie(nullptr);
+7.	    
+8.	    int n;
+9.	    cin >> n;
+10.	    
+11.	    vector<int> a(n);
+12.	    for (int i = 0; i < n; i++) {
+13.	        cin >> a[i];
+14.	    }
+15.	    
+16.	    int l, r;
+17.	    while (cin >> l >> r) {
+18.	        if (l == 0 && r == 0) {
+19.	            break;
+20.	        }
+21.	        l--;
+22.	        r--;
+23.	        reverse(a.begin() + l, a.begin() + r + 1);
+24.	    }
+25.	    
+26.	    for (int i = 0; i < n; i++) {
+27.	        cout << a[i] << ' ';
+28.	    }
+29.	    cout << '\n';
+30.	    
+31.	    return 0;
+32.	}
+33.	
