@@ -1,0 +1,42 @@
+1.	#include <bits/stdc++.h>
+2.	using namespace std;
+3.	 
+4.	int main() {
+5.	    ios_base::sync_with_stdio(false);
+6.	    cin.tie(nullptr);
+7.	    
+8.	    int n, m, k;
+9.	    cin >> n >> m >> k;
+10.	    
+11.	    vector<vector<int>> g(n + 1);
+12.	    for (int i = 0; i < m; i++) {
+13.	        int u, v;
+14.	        cin >> u >> v;
+15.	        g[u].push_back(v);
+16.	        g[v].push_back(u);
+17.	    }
+18.	    
+19.	    vector<int> dist(n + 1, -1);
+20.	    queue<int> q;
+21.	    
+22.	    dist[k] = 0;
+23.	    q.push(k);
+24.	    
+25.	    while (!q.empty()) {
+26.	        int v = q.front();
+27.	        q.pop();
+28.	        
+29.	        for (int to : g[v]) {
+30.	            if (dist[to] == -1) {
+31.	                dist[to] = dist[v] + 1;
+32.	                q.push(to);
+33.	            }
+34.	        }
+35.	    }
+36.	    
+37.	    for (int i = 1; i <= n; i++) {
+38.	        cout << dist[i] << (i == n ? "\n" : " ");
+39.	    }
+40.	    
+41.	    return 0;
+42.	}
