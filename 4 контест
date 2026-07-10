@@ -1,0 +1,28 @@
+1.	#include <bits/stdc++.h>
+2.	using namespace std;
+3.	 
+4.	int main() {
+5.	    ios_base::sync_with_stdio(false);
+6.	    cin.tie(nullptr);
+7.	    
+8.	    int N, Q;
+9.	    cin >> N >> Q;
+10.	    
+11.	    vector<long long> diff(N + 2, 0);
+12.	    
+13.	    while (Q--) {
+14.	        int l, r;
+15.	        long long v;
+16.	        cin >> l >> r >> v;
+17.	        diff[l] += v;
+18.	        diff[r + 1] -= v;
+19.	    }
+20.	    
+21.	    for (int i = 1; i <= N; i++) {
+22.	        diff[i] += diff[i - 1];
+23.	        cout << diff[i] << " ";
+24.	    }
+25.	    cout << "\n";
+26.	    
+27.	    return 0;
+28.	}
